@@ -118,31 +118,203 @@ var {
   }
 });
 
-// src/index.tsx
-var Button = styled("button", {
-  fontFamily: "$default",
-  backgroundColor: "$ignite300",
+// src/components/Box.tsx
+var Box = styled("div", {
+  padding: "$4",
   borderRadius: "$md",
-  padding: " $2 $4",
-  border: 0,
-  color: "$white",
-  fontWeight: "bold",
+  backgroundColor: "$gray800",
+  border: "1px solid $gray600"
+});
+
+// src/components/Text.tsx
+var Text = styled("p", {
+  fontFamily: "$default",
+  lineHeight: "$base",
+  margin: 0,
+  color: "$gray100",
   variants: {
     size: {
-      small: {
-        fontSize: 14,
-        padding: "$2 $4"
+      xxs: {
+        fontSize: "$xxs"
       },
-      big: {
-        fontSize: 16,
-        padding: "$3 $6"
+      xs: {
+        fontSize: "$xs"
+      },
+      sm: {
+        fontSize: "$sm"
+      },
+      md: {
+        fontSize: "$md"
+      },
+      lg: {
+        fontSize: "$lg"
+      },
+      xl: {
+        fontSize: "$xl"
+      },
+      "2xl": {
+        fontSize: "$2xl"
+      },
+      "4xl": {
+        fontSize: "$4xl"
+      },
+      "5xl": {
+        fontSize: "$5xl"
+      },
+      "6xl": {
+        fontSize: "$6xl"
+      },
+      "7xl": {
+        fontSize: "$7xl"
+      },
+      "8xl": {
+        fontSize: "$8xl"
+      },
+      "9xl": {
+        fontSize: "$9xl"
       }
     }
   },
   defaultVariants: {
-    size: "small"
+    size: "md"
+  }
+});
+
+// src/components/Heading.tsx
+var Heading = styled("h2", {
+  fontFamily: "$default",
+  lineHeight: "$shorter",
+  margin: 0,
+  color: "$gray100",
+  variants: {
+    size: {
+      sm: { fontSize: "$xl" },
+      md: { fontSize: "2xl" },
+      lg: { fontSize: "4xl" },
+      "2xl": { fontSize: "$5xl" },
+      "3xl": { fontSize: "$6xl" },
+      "4xl": { fontSize: "$7xl" },
+      "5xl": { fontSize: "$8xl" },
+      "6xl": { fontSize: "$9xl" }
+    },
+    defaultVariants: {
+      size: "md"
+    }
+  }
+});
+
+// src/components/Avatar/styles.ts
+import * as Avatar from "@radix-ui/react-avatar";
+var AvatarContainer = styled(Avatar.Root, {
+  borderRadius: "$full",
+  display: "inline-flex",
+  width: "$12"
+});
+var AvatarImage = styled(Avatar.Image, {
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  borderRadius: "inherit"
+});
+var AvatarFallback = styled(Avatar.Fallback, {
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "$gray800",
+  backgroundColor: "$gray600",
+  svg: {
+    width: "$6",
+    height: "$6"
+  }
+});
+
+// src/components/Avatar/index.tsx
+import { User } from "phosphor-react";
+import { jsx, jsxs } from "react/jsx-runtime";
+function Avatar2(props) {
+  return /* @__PURE__ */ jsxs(AvatarContainer, { children: [
+    /* @__PURE__ */ jsx(AvatarImage, __spreadValues({}, props)),
+    /* @__PURE__ */ jsx(AvatarFallback, { delayMs: 600, children: /* @__PURE__ */ jsx(User, {}) })
+  ] });
+}
+
+// src/components/Button.tsx
+var Button = styled("button", {
+  all: "unset",
+  borderRadius: "$sm",
+  fontSize: "$sm",
+  fontWeight: "$medium",
+  fontFamily: "$default",
+  textAlign: "center",
+  minWidth: 120,
+  boxSizing: "border-box",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "$2",
+  padding: "0 $4",
+  cursor: "pointer",
+  svg: {
+    width: "$4",
+    height: "$4"
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  },
+  variants: {
+    variant: {
+      primary: {
+        color: "$white",
+        backgroundColor: "$ignite500",
+        "&:not(:disabled):hover": {
+          backgroundColor: "$ignite300"
+        },
+        "&:disabled": {
+          backgroundColor: "$gray200"
+        }
+      },
+      secondary: {
+        color: "$ignite300",
+        border: "2px solid $ignite500",
+        "&:not(:disabled):hover": {
+          backgroundColor: "$ignite500",
+          color: "$white"
+        },
+        "&:disabled": {
+          backgroundColor: "$gray200",
+          borderColor: "$gray200"
+        }
+      },
+      tertiary: {
+        color: "$gray100",
+        "&:not(:disabled):hover": {
+          color: "$white"
+        },
+        "&:disabled": {
+          borderColor: "$gray600"
+        }
+      }
+    },
+    size: {
+      sm: {
+        height: 38
+      },
+      md: {
+        height: 46
+      }
+    }
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "md"
   }
 });
 export {
-  Button
+  Avatar2 as Avatar,
+  Box,
+  Button,
+  Heading,
+  Text
 };
